@@ -18,8 +18,8 @@ Welcome to the **Chitranshi Makeover** repository! This website is built to show
 ## 📩 Contact & Bookings  
 For **makeup appointments & inquiries**, reach out via:  
 📍 **Location:** Banki, Cuttack, Odisha  
-📧 **Email:** [Your Email]  
-📱 **Instagram:** [Instagram Link]  
+📧 **Email:** suchitrapani98@gmail.com  
+📱 **Instagram:** https://www.instagram.com/chitranshi_makeover_/
 
 ---
 
