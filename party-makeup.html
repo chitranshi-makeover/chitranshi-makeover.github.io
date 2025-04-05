@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chitranshi Makeover</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="https://akcreation-apps.github.io/chitranshi-makeover/logo.webp">
+    <link rel="icon" type="image/png" href="https://chitranshi-makeover.github.io/logo.webp">
 </head>
 <body>
     <header id="header">
-        <img src="https://akcreation-apps.github.io/chitranshi-makeover/logo.webp" alt="Chitranshi Makeovers Logo" class="logo">
+        <img src="https://chitranshi-makeover.github.io/logo.webp" alt="Chitranshi Makeovers Logo" class="logo">
         <div>
             <h2>Chitranshi Makeover</h2>
             <p>Your Beauty, Our Passion</p>
@@ -18,8 +18,22 @@
     <div class="gallery-container" id="gallery"></div>
     <div id="noImageMessage" class="hidden">
         <p>✨ <strong>Be the next beauty icon! Book your appointment today and get featured on our page!</strong> ✨</p>
-        <button id="whatsappBtn">Chat on WhatsApp</button>
     </div>
+    <section class="welcome">
+        <p>✨ <strong>Book your appointment today and let us enhance your natural beauty!</strong> ✨</p>
+        <button id="whatsappBtn">Chat on WhatsApp</button>
+    </section>
+    <section class="follow-us-mini" id="follow-us-mini">
+        <h2>Stay Connected</h2>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/chitranshi_makeover_" target="_blank" title="Follow on Instagram">
+                <img src="https://img.icons8.com/color/48/instagram-new--v1.png" alt="Instagram">
+            </a>
+            <a href="https://youtube.com/@chitranshi_makeover" target="_blank" title="Subscribe on YouTube">
+                <img src="https://img.icons8.com/color/48/youtube-play.png" alt="YouTube">
+            </a>
+        </div>
+    </section>
     <!-- Full-Screen Image View -->
     <div class="fullscreen-view" id="fullscreenView">
         <button class="nav-btn prev" id="prevImage">❮</button>
@@ -27,7 +41,9 @@
         <button class="nav-btn next" id="nextImage">❯</button>
         <button class="close-btn" id="closeFullscreen">×</button>
     </div>
-
+    <footer>
+        <p>&copy; 2025 <a href="https://akcreation-apps.github.io/makeover-app.html" target="_blank">AkCreation</a> | Made in India with ❤️</p>
+    </footer>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const gallery = document.getElementById("gallery");
@@ -73,6 +89,7 @@
                 img.onerror = function () {
                     if (!foundImages) {
                         noImageMessage.classList.remove("hidden");
+                        gallery.style.display = "none";
                     }
                 };
             }
@@ -142,8 +159,9 @@
             font-size: 18px;
             font-weight: bold;
             color: #d63384;
-            margin: 20px;
-            padding: 10px;
+            margin: 30px auto;
+            max-width: 600px;
+            padding: 20px 10px;
             border: 2px dashed #d63384;
             background: #fff3f6;
             border-radius: 10px;

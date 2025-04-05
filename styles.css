@@ -51,7 +51,7 @@ header {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 10px;
     justify-content: center;
-    padding: 10px;
+    padding: 20px 10px;
 }
 
 .gallery-container img {
@@ -72,7 +72,7 @@ header {
     background: #fce4ec;
     color: #c2185b;
     text-align: center;
-    padding: 12px;
+    padding: 20px 10px;
     font-size: 1.3rem;
     font-weight: bold;
     border-radius: 10px;
@@ -87,7 +87,7 @@ header {
     text-align: center;
     background: linear-gradient(135deg, #ff758c, #ff7eb3);
     color: white;
-    padding: 30px 20px;
+    padding: 20px 10px;
     border-radius: 10px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     max-width: 600px;
@@ -116,7 +116,7 @@ header {
     font-weight: bold;
     border: none;
     border-radius: 25px;
-    padding: 12px 20px;
+    padding: 20px 10px;
     cursor: pointer;
     transition: background 0.3s, transform 0.2s;
 }
@@ -129,7 +129,7 @@ header {
 /* Why Choose Us Section */
 .why-choose-us {
     background: linear-gradient(135deg, #ff758c, #ff7eb3);
-    padding: 20px;
+    padding: 20px 10px;
     margin: 20px auto;
     border-radius: 10px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
@@ -154,7 +154,7 @@ header {
 .follow-us-mini {
     text-align: center;
     background: linear-gradient(135deg, #ff758c, #ff7eb3);
-    padding: 15px 15px;
+    padding: 20px 10px;
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     margin: 30px auto;
@@ -184,7 +184,7 @@ header {
     color: white;
     text-decoration: none;
     font-size: 16px;
-    padding: 10px 20px;
+    padding: 20px 10px;
     border-radius: 30px;
     transition: background 0.3s ease;
 }
@@ -283,7 +283,7 @@ header {
     font-weight: bold;
     border: none;
     border-radius: 25px;
-    padding: 12px 20px;
+    padding: 20px 10px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
@@ -355,12 +355,11 @@ header {
     background: linear-gradient(90deg, #ff758c, #ff7eb3);
     color: white;
     text-align: center;
-    padding: 12px 20px;
+    padding: 20px 10px;
     font-size: 16px;
     font-weight: bold;
     border-radius: 10px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-    width: 90%;
     max-width: 600px;
     margin: 20px auto;
 }
