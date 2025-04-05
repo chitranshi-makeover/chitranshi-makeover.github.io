@@ -60,7 +60,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
             document.getElementById("countdown").innerText = `${days} days`;
         } else {
-            document.getElementById("follow-us").style.display = "";
             document.getElementById("countdown-section").style.display = "none";
         }
     }
