@@ -51,6 +51,10 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "engagement-makeup.html"; // Change this to your actual home page URL
     });
 
+    document.getElementById("reception-makeup").addEventListener("click", function() {
+        window.location.href = "reception-makeup.html"; // Change this to your actual home page URL
+    });
+
     <!-- Countdown Timer Script -->
     const openingDate = new Date("2025-05-01T00:00:00").getTime(); // Set opening date
 
