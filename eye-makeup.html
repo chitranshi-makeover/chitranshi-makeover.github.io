@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chitranshi Makeover</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="https://chitranshi-makeover.github.io/logo.webp">
+</head>
+<body>
+    <header id="header">
+        <img src="https://chitranshi-makeover.github.io/logo.webp" alt="Chitranshi Makeovers Logo" class="logo">
+        <div>
+            <h2>Chitranshi Makeover</h2>
+            <p>Your Beauty, Our Passion</p>
+            <p style="color:#ff4081; font-weight: 500;">💼 Freelance Artist | Banki, Cuttack</p>
+        </div>
+    </header>
+    <div class="gallery-container" id="gallery"></div>
+    <div id="noImageMessage" class="hidden">
+        <p>✨ <strong>Be the next beauty icon! Book your appointment today and get featured on our page!</strong> ✨</p>
+    </div>
+    <section class="welcome">
+        <p>✨ <strong>Book your appointment today and let us enhance your natural beauty!</strong> ✨</p>
+        <button id="whatsappBtn">Chat on WhatsApp</button>
+    </section>
+    <!-- Full-Screen Image View -->
+    <div class="fullscreen-view" id="fullscreenView">
+        <button class="nav-btn prev" id="prevImage">❮</button>
+        <img id="fullscreenImage" src="" alt="Full-Screen View">
+        <button class="nav-btn next" id="nextImage">❯</button>
+        <button class="close-btn" id="closeFullscreen">×</button>
+    </div>
+    <footer >
+        <!-- Social + Address Line -->
+        <div id="footer">
+            <!-- Social Icons -->
+            <div>
+                <u>Contact Us</u>
+                <div>
+                    <a href="https://youtube.com/@chitranshi_makeover" target="_blank"><img src="https://img.icons8.com/color/32/youtube-play.png" alt="YouTube"></a>
+                    <a href="https://www.instagram.com/chitranshi_makeover_" target="_blank"><img src="https://img.icons8.com/color/32/instagram-new--v1.png" alt="Instagram"></a>
+                </div>
+            </div>
+            <!-- Short Address -->
+            <div>
+                Banki, Cuttack, Odisha<br>
+                India, 754008
+            </div>
+        </div>
+
+        <!-- Bottom Copyright -->
+        <p>&copy; <span id="year"></span> <a href="https://akcreation-apps.github.io/makeover-app.html" target="_blank">AkCreation</a> | Made in India with ❤️</p>
+    </footer>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("year").textContent = new Date().getFullYear();
+            const gallery = document.getElementById("gallery");
+            const fullscreenView = document.getElementById("fullscreenView");
+            const fullscreenImage = document.getElementById("fullscreenImage");
+            const closeFullscreen = document.getElementById("closeFullscreen");
+            const prevImageBtn = document.getElementById("prevImage");
+            const nextImageBtn = document.getElementById("nextImage");
+            const noImageMessage = document.getElementById("noImageMessage");
+
+            const imagePath = "src/Eye/";  // Path to images folder
+            let images = [];
+            let currentIndex = 0;
+            let imageIndex = 1;
+            let foundImages = false;
+
+            function loadImage() {
+                let img = new Image();
+                img.src = `${imagePath}Eye (${imageIndex}).jpg`;
+                img.alt = `Eye ${imageIndex}`;
+                img.classList.add("gallery-img");
+
+                img.onload = function () {
+                    gallery.appendChild(img);
+                    images.push(img.src);
+                    imageIndex++;
+                    foundImages = true;
+
+                    img.addEventListener("click", function (event) {
+                        event.stopPropagation();
+                        let clickedImageSrc = new URL(this.src, location.href).href;
+                        currentIndex = images.findIndex(image => new URL(image, location.href).href === clickedImageSrc);
+
+                        if (currentIndex !== -1) {
+                            fullscreenImage.src = images[currentIndex];
+                            fullscreenView.style.display = "flex";
+                        }
+                    });
+
+                    loadImage(); // Load next image recursively
+                };
+
+                img.onerror = function () {
+                    if (!foundImages) {
+                        noImageMessage.classList.remove("hidden");
+                        gallery.style.display = "none";
+                    }
+                };
+            }
+
+            loadImage();
+
+            fullscreenImage.addEventListener("click", function (event) {
+                event.stopPropagation();
+            });
+
+            fullscreenView.addEventListener("click", function (e) {
+                if (e.target === fullscreenView) {
+                    fullscreenView.style.display = "none";
+                }
+            });
+
+            function showNextImage() {
+                if (currentIndex < images.length - 1) {
+                    currentIndex++;
+                    fullscreenImage.src = images[currentIndex];
+                }
+            }
+
+            function showPrevImage() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    fullscreenImage.src = images[currentIndex];
+                }
+            }
+
+            nextImageBtn.addEventListener("click", showNextImage);
+            prevImageBtn.addEventListener("click", showPrevImage);
+
+            closeFullscreen.addEventListener("click", function () {
+                fullscreenView.style.display = "none";
+            });
+
+            document.addEventListener("keydown", function (event) {
+                if (fullscreenView.style.display === "flex") {
+                    if (event.key === "ArrowRight") showNextImage();
+                    if (event.key === "ArrowLeft") showPrevImage();
+                    if (event.key === "Escape") fullscreenView.style.display = "none";
+                }
+            });
+
+            document.getElementById("header").addEventListener("click", function() {
+                window.location.href = "index.html";
+            });
+
+            const whatsappBtn = document.getElementById("whatsappBtn");
+            if (whatsappBtn) {
+                whatsappBtn.addEventListener("click", function () {
+                    const phoneNumber = "+917682904911";
+                    const message = "Hi! Can I get more info about your makeup services ?";
+                    location.href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                });
+            }
+        });
+    </script>
+
+    <style>
+        .hidden {
+            display: none;
+        }
+        #noImageMessage {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #d63384;
+            margin: 30px auto;
+            max-width: 600px;
+            padding: 20px 10px;
+            border: 2px dashed #d63384;
+            background: #fff3f6;
+            border-radius: 10px;
+        }
+    </style>
+</body>
+</html>
