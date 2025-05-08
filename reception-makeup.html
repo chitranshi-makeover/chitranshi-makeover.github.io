@@ -6,6 +6,27 @@
     <title>Chitranshi Makeover</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="https://chitranshi-makeover.github.io/logo.webp">
+    <style>
+        .image-wrapper {
+            position: relative;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .image-loader {
+            text-align: center;
+            margin-top: 5px;
+            font-size: 12px;
+            color: #888;
+        }
+
+        .gallery-img {
+            max-width: 100%;
+            display: block;
+        }
+
+    </style>
+
 </head>
 <body>
     <header id="header">
@@ -53,6 +74,9 @@
         <p>&copy; <span id="year"></span> <a href="https://akcreation-apps.github.io/makeover-app.html" target="_blank">AkCreation</a> | Made in India with ❤️</p>
     </footer>
 
+    <div id="loader" class="loader-overlay">
+        <div class="spinner"></div>
+    </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -72,13 +96,24 @@
             let foundImages = false;
 
             function loadImage() {
+                const wrapper = document.createElement("div");
+                wrapper.className = "image-wrapper";
+
+                const loader = document.createElement("div");
+                loader.className = "image-loader";
+                loader.textContent = "Loading...";
+
                 let img = new Image();
                 img.src = `${imagePath}Reception-Makeup (${imageIndex}).jpg`;
                 img.alt = `Reception-Makeup ${imageIndex}`;
                 img.classList.add("gallery-img");
 
+                wrapper.appendChild(img);
+                wrapper.appendChild(loader);
+                gallery.appendChild(wrapper);
+
                 img.onload = function () {
-                    gallery.appendChild(img);
+                    loader.remove(); // Remove "Loading..." once image is fully loaded
                     images.push(img.src);
                     imageIndex++;
                     foundImages = true;
@@ -98,6 +133,7 @@
                 };
 
                 img.onerror = function () {
+                    wrapper.remove();
                     if (!foundImages) {
                         noImageMessage.classList.remove("hidden");
                         gallery.style.display = "none";
