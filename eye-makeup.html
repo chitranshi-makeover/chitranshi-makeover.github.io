@@ -110,10 +110,10 @@
 
                 wrapper.appendChild(img);
                 wrapper.appendChild(loader);
+                gallery.appendChild(wrapper);
 
                 img.onload = function () {
                     loader.remove(); // Remove "Loading..." once image is fully loaded
-                    gallery.appendChild(wrapper);
                     images.push(img.src);
                     imageIndex++;
                     foundImages = true;
