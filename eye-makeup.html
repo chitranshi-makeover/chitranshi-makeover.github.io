@@ -6,6 +6,37 @@
     <title>Chitranshi Makeover</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="https://chitranshi-makeover.github.io/logo.webp">
+
+    <style>
+        .loader-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .spinner {
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid #ff4081;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+    </style>
+
 </head>
 <body>
     <header id="header">
@@ -53,6 +84,9 @@
         <p>&copy; <span id="year"></span> <a href="https://akcreation-apps.github.io/makeover-app.html" target="_blank">AkCreation</a> | Made in India with ❤️</p>
     </footer>
 
+    <div id="loader" class="loader-overlay">
+        <div class="spinner"></div>
+    </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -72,6 +106,7 @@
             let foundImages = false;
 
             function loadImage() {
+                document.getElementById("loader").style.display = "flex";
                 let img = new Image();
                 img.src = `${imagePath}Eye (${imageIndex}).jpg`;
                 img.alt = `Eye ${imageIndex}`;
@@ -102,7 +137,14 @@
                         noImageMessage.classList.remove("hidden");
                         gallery.style.display = "none";
                     }
+                    document.getElementById("loader").style.display = "none";
                 };
+
+                // Stop loader once we reach end or fail to load further
+                if (imageIndex > 100) { // Optional limit to avoid infinite loop
+                    document.getElementById("loader").style.display = "none";
+                }
+
             }
 
             loadImage();
