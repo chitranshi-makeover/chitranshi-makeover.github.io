@@ -114,8 +114,23 @@ header {
     color: #ffdeeb;
 }
 
+/* Footer map style */
+.footer-map {
+    margin-top: 10px;
+    width: 100%;
+    height: 200px;
+    border: 0;
+    border-radius: 10px;
+}
+@media (min-width: 768px) {
+    .footer-map {
+        height: 250px; /* taller on bigger screens */
+    }
+}
+
+
 /* Why Choose Us Section */
-.why-choose-us {
+.why-choose-us, .location {
     background: linear-gradient(135deg, #ff758c, #ff7eb3);
     padding: 20px 10px;
     margin: 20px auto;
@@ -124,17 +139,17 @@ header {
     max-width: 600px;
 }
 
-.why-choose-us h2 {
+.why-choose-us h2, .location h2 {
     color: #ffff;
     margin-bottom: 10px;
 }
 
-.why-choose-us ul {
+.why-choose-us ul, .location ul {
     color: #ffff;
     list-style: none;
 }
 
-.why-choose-us li {
+.why-choose-us li, .location li {
     text-align: left;
     margin: 5px 0;
 }
